@@ -54,7 +54,7 @@ public:
 
     /**
      * @brief Applique une translation à toutes les pièces constituant le groupe.
-     * @param v Vecteur de translation[cite: 18].
+     * @param v Vecteur de translation.
      */
     void translation(const Vecteur2D& v) override {
         for (Forme* f : _formes) f->translation(v);

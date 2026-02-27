@@ -15,21 +15,21 @@ using namespace std;
 
 /**
  * @class Groupe
- * @brief Représente une forme géométrique composée d'une ou plusieurs formes[cite: 13].
+ * @brief Représente une forme géométrique composée d'une ou plusieurs formes.
  * * Cette classe permet de manipuler un ensemble de formes comme une entité unique.
  */
 class Groupe : public Forme {
 private:
     /**
-     * @brief Liste des formes constituant le groupe (simples ou composées)[cite: 13].
-     * * Une forme ne peut appartenir qu'à un seul groupe à la fois[cite: 14, 75].
+     * @brief Liste des formes constituant le groupe (simples ou composées).
+     * * Une forme ne peut appartenir qu'à un seul groupe à la fois.
      */
     vector<Forme*> _formes;
 
 public:
     /**
      * @brief Constructeur de Groupe.
-     * @param couleur La couleur appliquée aux pièces constituant le groupe lors du dessin[cite: 57].
+     * @param couleur La couleur appliquée aux pièces constituant le groupe lors du dessin.
      */
     Groupe(const string& couleur) : Forme(couleur) {}
 
@@ -62,8 +62,8 @@ public:
 
     /**
      * @brief Applique une homothétie à toutes les pièces constituant le groupe.
-     * @param centre Point invariant de l'opération[cite: 19].
-     * @param rapport Facteur de zoom[cite: 19, 20].
+     * @param centre Point invariant de l'opération.
+     * @param rapport Facteur de zoom.
      */
     void homothetie(const Vecteur2D& centre, double rapport) override {
         for (Forme* f : _formes) f->homothetie(centre, rapport);
@@ -71,8 +71,8 @@ public:
 
     /**
      * @brief Applique une rotation à toutes les pièces constituant le groupe.
-     * @param centre Point invariant (centre de la rotation)[cite: 22].
-     * @param angle Angle signé en radians[cite: 22].
+     * @param centre Point invariant (centre de la rotation).
+     * @param angle Angle signé en radians.
      */
     void rotation(const Vecteur2D& centre, double angle) override {
         for (Forme* f : _formes) f->rotation(centre, angle);
@@ -80,8 +80,8 @@ public:
 
     /**
      * @brief Calcule l'aire totale du groupe.
-     * * L'aire d'un groupe est la somme des aires des formes qui le composent[cite: 69].
-     * @return L'aire cumulée des formes disjointes[cite: 69].
+     * * L'aire d'un groupe est la somme des aires des formes qui le composent.
+     * @return L'aire cumulée des formes disjointes.
      */
     double calculerAire() const override {
         double total = 0;
@@ -90,8 +90,8 @@ public:
     }
 
     /**
-     * @brief Mise en œuvre du Design Pattern Visitor pour le dessin ou la sauvegarde[cite: 49, 65].
-     * @param v Pointeur vers le visiteur (ex: TCP/IP ou Fichier)[cite: 35, 62].
+     * @brief Mise en œuvre du Design Pattern Visitor pour le dessin ou la sauvegarde.
+     * @param v Pointeur vers le visiteur (ex: TCP/IP ou Fichier).
      */
     void accepte(VisiteurForme* v) const override {
         v->visite(*this);
@@ -103,7 +103,7 @@ public:
     const vector<Forme*>& getFormes() const { return _formes; }
 
     /**
-     * @brief Opérateur de conversion en string pour l'affichage console[cite: 71, 93].
+     * @brief Opérateur de conversion en string pour l'affichage console.
      * @return Une chaîne représentant la structure du groupe.
      */
     operator string() const override {

@@ -12,18 +12,18 @@
 
  /**
   * @class VisiteurSauvegardeTexte
-  * @brief Implémente le Design Pattern Visitor pour l'exportation sur disque[cite: 65].
+  * @brief Implémente le Design Pattern Visitor pour l'exportation sur disque.
   * * Cette classe sépare l'algorithmique de sauvegarde de la structure des formes,
   * permettant ainsi d'envisager d'autres formats (XML, BDD) sans modifier les classes Forme.
   */
 class VisiteurSauvegardeTexte : public VisiteurForme {
 private:
-    std::string _nomFichier; ///< Nom du fichier texte de destination[cite: 62].
+    std::string _nomFichier; ///< Nom du fichier texte de destination.
 
 public:
     /**
      * @brief Constructeur du visiteur de sauvegarde.
-     * @param nomFichier Chemin du fichier disque[cite: 62].
+     * @param nomFichier Chemin du fichier disque.
      */
     VisiteurSauvegardeTexte(const std::string& nomFichier);
 
@@ -35,7 +35,7 @@ public:
     /**
      * @name Méthodes de visite
      * Chaque méthode est responsable de l'écriture des données spécifiques
-     * d'une forme dans le fichier texte[cite: 62, 63].
+     * d'une forme dans le fichier texte.
      * @{
      */
 

@@ -1,34 +1,29 @@
-🏗 PPIL Project - Developer Guide
-I've set up the core architecture (Abstract classes, Composite pattern, and Visitor interface). To finish the project, follow these instructions.
+🏗 Projet PPIL - Guide du développeur : J’ai mis en place l’architecture de base (classes abstraites, patron Composite et interface Visiteur). Pour finaliser le projet, suivez ces instructions.
 
-1. Geometry & Math (Mathematics Expert)
-The Vecteur2D and Forme base classes are ready. You need to implement the logic in the inherited classes.
+Géométrie et mathématiques (Expert en mathématiques) : Les classes de base Vecteur2D et Forme sont prêtes. Vous devez implémenter la logique dans les classes dérivées.
 
-Transformations: Implement rotation(centre, angle) and homothetie(centre, rapport) in Cercle, Segment, and Polygone.
+Transformations : Implémentez la rotation (centre, angle) et l’homothétie (centre, rapport) dans Cercle, Segment et Polygone.
 
-Area: Implement calculerAire(). For Polygone, use the determinant method (Shoelace formula) from the annex.
+Aire : Implémentez la méthode calculerAire(). Pour Polygone, utilisez la méthode du déterminant (formule de Shoelace) de l’annexe.
 
-Operators: Use the overloaded operators in Vecteur2D (+, -, *) to keep the geometry code clean.
+Opérateurs : Utilisez les opérateurs surchargés de Vecteur2D (+, -, *) pour un code géométrique plus clair.
 
-2. Networking & Drawing (Network Expert)
-I’ve provided the Singleton base for the connection and the Visitor interface for drawing.
+Réseau et dessin (Expert en réseau) : J’ai fourni la classe de base Singleton pour la connexion et l’interface Visiteur pour le dessin.
 
-Connection: Create a class inheriting from ConnexionManager to handle the socket (Winsock/Linux).
+Connexion : Créez une classe héritant de ConnexionManager pour gérer le socket (Winsock/Linux).
 
-VisiteurDessin: Create a concrete Visitor. Each visite() method should build the string protocol (e.g., "Cercle;red;10,10;5") and send it via the ConnexionManager.
+VisiteurDessin : Créez un Visiteur concret. Chaque méthode visite() doit construire le protocole de chaîne (par exemple, "Cercle;red;10,10;5") et l'envoyer via le ConnexionManager.
 
-3. Loading (Persistence Expert)
-I implemented the saving logic. You need to implement the Chain of Responsibility to load the file back.
+Chargement (Expert en persistance) : J'ai implémenté la logique d'enregistrement. Vous devez implémenter la chaîne de responsabilité pour recharger le fichier.
 
-Loaders: Inherit from ChargeurForme to create ChargeurCercle, ChargeurSegment, etc..
+Chargeurs : Héritez de ChargeurForme pour créer ChargeurCercle, ChargeurSegment, etc.
 
-The Chain: If a loader doesn't recognize the line prefix, call _suivant->charger(ligne).
+La chaîne : Si un chargeur ne reconnaît pas le préfixe de ligne, appelez _suivant->charger(ligne).
 
-Groups: Handle Groupe;Debut and Groupe;Fin markers to reconstruct the nested hierarchy.
+Groupes : Gérez les marqueurs Groupe;Debut et Groupe;Fin pour reconstruire la hiérarchie imbriquée.
 
-🚫 The Ground Rules
-No Hardcoded Colors: Use Forme::RED, Forme::BLUE, etc..
+🚫 Règles de base : Pas de couleurs codées en dur : Utilisez Forme::RED, Forme::BLUE, etc.
 
-Memory: The Groupe class cleans up its own children in its destructor. Don't manually delete shapes that have been added to a group.
+Mémoire : La classe Groupe libère la mémoire de ses enfants dans son destructeur. Ne supprimez pas manuellement les formes ajoutées à un groupe.
 
-Radians: All rotation logic must use radians.
+Radians : Toute la logique de rotation doit utiliser les radians.
